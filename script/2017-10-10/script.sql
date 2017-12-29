@@ -1,0 +1,2 @@
+﻿create or replace view contribution_vue  as 
+select contribution.id, titre, extrait, contenu, concat(concat(utilisateur.nom, ' '), utilisateur.prenom) as auteur, daty, idsource, etat from contribution join utilisateur on contribution.auteur = utilisateur.id

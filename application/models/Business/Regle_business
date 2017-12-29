@@ -1,0 +1,132 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Regle_business  {
+	$utilisateur;
+
+	public function __construct($object = NULL){
+		if ($object === NULL) return;
+		$utilisateur = $object;
+	}
+
+	public function update_regles_par_validite($regles, $object) {
+		foreach ($regles as $regle) {
+		    $this->udpate_regle_par_validite($regle, $object);
+		}
+	}
+	public function udpate_regle_par_validite($regle, $object) {
+
+		if($this->is_regle_valide($regle, $object)) {
+			$table = $object->getNomTable();
+			$pk_table = $object->getPrimaryKey();
+			$object->setValide(true);
+
+			update($object, $table, $pk_table);
+		}
+	}
+
+	public function is_regle_valide($regle, $object) {
+		$nomAttribut1 = $this->getNomAttribut($regle, 1);
+		$nomAttribut2 = $this->getNomAttribut($regle, 2);
+
+		$valeurAttribut1 = $this->getValeurAttribut($object,  $nomAttribut1);
+		$valeurAttribut2 = $this->getValeurAttribut($object,  $nomAttribut2);
+
+		$operation = $this->get0peration($regle);
+
+		switch ($operation) {
+			case 'obligatoire':
+				return $valeurAttribut1 != '';
+				break;
+			case '<':
+				return $valeurAttribut1 <= $valeurAttribut2;
+				break;
+			case '>':
+				return $valeurAttribut1 >= $valeurAttribut2;
+				break;
+			case '=':
+				return $valeurAttribut1 == $valeurAttribut2;
+				break;
+
+			
+			default:
+				return null;
+		}
+	}
+
+	public function get_regles($nom_classe, $_utilisateur=NULL) {
+		$tempUtilisateur = $_utilisateur != NULL ? $_utilisateur : $utilisateur;
+
+		
+		//recuperer toute les regles
+		$regles = $this->get_regles();
+
+		//filtrer les regles par l'utilisateur
+		$reglesFiltreeParUtilisateur = $this->get_regles($tempUtilisateur);
+
+		//filtrer les regles par le nom de la classe
+		$reglesFiltreeParUtilisateurParNomClasse = NULL;
+
+		//to do
+
+		return $reglesFiltreeParUtilisateurParNomClasse;
+	}
+
+	//personne.dette > personne.creance : recuperer dette en tant que string si indice attribut est egale à 1
+	//return null si l'indice n'est pas present, ne throw pas des exceptions
+	public function getNomAttribut($regle, $indiceAttribut) {
+		$nomAttribut = NULL;
+
+		//to do
+		
+		return $nomAttribut;
+	}
+
+
+	//personne.dette > personne.creance : recuperer la dette de la personne si le nomAttribut = dette
+	//return null si l'object ne contient pas d'attribut ayant le nom, ne throw pas des exceptions
+	public function getValeurAttribut($object,  $nomAttribut) {
+		$valeurAttribut = NULL;
+		
+		//to do
+		
+		return $valeurAttribut;
+	}
+
+	//personne.dette > personne.creance : recuperer le symbole superieur
+	public function get0peration($regle) {
+		$operation = NULL;
+
+		//to do
+
+		return $operation;
+	}
+
+	//fonction qui retourn toute les regles
+	public function get_regles() {
+
+		$regle = new RegleValidation();
+
+		$regles = find($regle, "regle_validation");
+
+		$regle_object = arrayAssociatifToObjectTable($regles,"RegleValidation","regle_validation");
+
+		return $regle_object;
+	}
+
+	//fonction qui retourn toute les regles d'un utilisateur
+	public function get_regles($utilisateur) {
+		$this->
+		$regles = NULL;
+
+		//to do
+		$regle = new RegleValidation();
+		
+		$regles = find($regle, "regle_validation", array("id_utilisateur" => $utilisateur->id_utilisateur));
+
+		$regle_object = arrayAssociatifToObjectTable($regles,"RegleValidation","regle_validation");
+
+		return $regle_object;
+	}
+
+}
