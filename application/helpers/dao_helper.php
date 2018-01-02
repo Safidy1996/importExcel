@@ -16,8 +16,9 @@
             } else $query->order_by($order, $type_order);
         }
         if ($limit !== NULL && $offset !== NULL) $query->limit($offset, $limit);
+		//var_dump($code->db->last_query());
         $temp = $query->get()->result();
-        //var_dump($code->db->last_query());
+        
         return $instance->toArray($temp);
     }
 
@@ -70,7 +71,20 @@
             $code =& get_instance();
 
             $code->db->insert($table, $instance->getFields());
-//echo $code->db->last_query();
+//echo $code->db->last_query()."<br>";
+            $result = $insert_id = $code->db->insert_id();
+            return $result;
+        } catch(Exception $e) {
+            throw $e;
+        }
+    }
+
+    function saveNoId($instance, $table) {
+        try {
+            $code =& get_instance();
+
+            $code->db->insert($table, $instance->getFieldsNoId());
+//echo $code->db->last_query()."<br>";
             $result = $insert_id = $code->db->insert_id();
             return $result;
         } catch(Exception $e) {
@@ -165,8 +179,9 @@
         //Prend la liste de colonne d'une table
 
         //SELECT * FROM $database.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table' pour SQL SERVER
-        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='$database' AND `TABLE_NAME`='$table'";
+        //$query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='$database' AND `TABLE_NAME`='$table'";
 
+        $query = "SELECT * FROM $database.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table'";
         $query_ = $instance->db->query($query);
 
         return $query_->result();

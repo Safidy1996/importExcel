@@ -14,4 +14,10 @@ class Table extends Base_Model {
         );
     }
 
+    public function getFieldsNoId() {
+        return array (
+            "nom_exp_table" => $this->__get("nom_exp_table")
+        );
+    }
+
 }

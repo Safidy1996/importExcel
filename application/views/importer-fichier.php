@@ -26,7 +26,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <form action="<?= base_url('ImporterFichier/upload')?>" id="frmFileUpload" class="dropzone" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('index.php/Dropzone/upload')?>" id="frmFileUpload" class="dropzone" method="post" enctype="multipart/form-data">
                                 <div class="dz-message">
                                     <div class="drag-icon-cph">
                                         <i class="material-icons">touch_app</i>
@@ -78,7 +78,7 @@
             $("#table").val(conceptName);
             if(conceptName != ""){
                 $("#frmFileUpload").removeAttr("action");
-                $("#frmFileUpload").attr("action","<?php echo base_url('ImporterFichier/validerFichier') ?>");
+                $("#frmFileUpload").attr("action","<?php echo base_url('index.php/ImporterFichier/validerFichier') ?>");
                 $("#file_name").val($(".dz-filename span").html());
                 $("#frmFileUpload").submit();
             }

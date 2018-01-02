@@ -54,6 +54,7 @@ create table regle_validation
    id_exp_table         int not null,
    valeur_regle_validation varchar(100) not null,
    date_regle_validation datetime,
+   commentaire varchar(100) not null,
    primary key (id_regle_validation)
 );
 
@@ -78,3 +79,14 @@ alter table regle_validation add constraint fk_etre_dans_une_table foreign key (
 
 alter table regle_validation add constraint fk_poser_regle foreign key (id_utilisateur)
       references utilisateur (id_utilisateur);
+
+
+insert into regle_validation (id_utilisateur,id_exp_table,valeur_regle_validation,date_regle_validation,commentaire) values  (1,1,'nom_personne=prenom_personne','2017-12-29','Nom personne doit être égale au Prenom personne');
+insert into regle_validation (id_utilisateur,id_exp_table,valeur_regle_validation,date_regle_validation,commentaire) values (1,1,'dette_personne>creance_personne','2017-12-29','Dette doit être > à la créance');
+
+
+insert into operation_standard (libelle_operation_standard) values ('=');
+insert into operation_standard (libelle_operation_standard) values ('>');
+insert into operation_standard (libelle_operation_standard) values ('<');
+
+

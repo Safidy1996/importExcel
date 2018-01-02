@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>File Upload using dropzone.js and Codeigniter - arjun.net.in</h1>
-<form action="<?php echo site_url('/dropzone/upload'); ?>" class="dropzone"  >
+<form action="<?php echo site_url('Dropzone/upload'); ?>" class="dropzone"  >
 	<input type="submit">
 </form>
 </body>

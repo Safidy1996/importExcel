@@ -14,7 +14,8 @@ class Dropzone extends CI_Controller {
     
     public function upload() {
         echo "ato";
-        $targetPath = getcwd() . '/uploads/';
+        $targetPath = getcwd() . '/assets/uploads/';
+        echo $targetPath;
         if (!empty($_FILES)) {
         $tempFile = $_FILES['file']['tmp_name'];
         $fileName = $_FILES['file']['name'];

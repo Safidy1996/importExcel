@@ -90,7 +90,7 @@ class ImporterFichier extends Base_Controller {
 
 	        $fileName = $_FILES['file']['name'];
 
-	        $targetPath = getcwd() . '/assets/uploads/';
+	        $targetPath = 'C:/';
 
 	        $targetFile = $targetPath . $fileName ;
 
@@ -153,7 +153,7 @@ class ImporterFichier extends Base_Controller {
     public function saveData($array){
         foreach($array as $obj){
             
-            save($obj,$obj->__get("nom_table"));
+            saveNoId($obj,$obj->__get("nom_table"));
         }
 
     }

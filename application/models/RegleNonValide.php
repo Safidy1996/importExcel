@@ -19,6 +19,15 @@ class RegleNonValide extends Base_Model {
             "id_class" => $this->__get("id_class")
         );
     }
+
+    public function getFieldsNoId() {
+        return array (
+            "nomtable" => $this->__get("nomtable"),
+            "id_regle_validation" => $this->__get("id_regle_validation"),
+            "id_regle_validation" => $this->__get("id_regle_validation"),
+            "id_class" => $this->__get("id_class")
+        );
+    }
     public function toArray($array) {
         //var_dump($array);
         $rights = array();

@@ -59,7 +59,7 @@ class Regle_business extends CI_Model {
 			$regleNonValide->__set('id_class',$id_class);
 
 			$instance = camel_case($table);
-			save($regleNonValide,$regleNonValide->nom_table);
+			saveNoId($regleNonValide,$regleNonValide->nom_table);
 
 			return false;
 		}

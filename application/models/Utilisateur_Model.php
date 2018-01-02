@@ -51,6 +51,15 @@ class Utilisateur_Model extends CI_Model {
             "mdp_utilisateur" => $this->__get("mdp_utilisateur")
         );
     }
+    public function getFieldsNoId() {
+        return array (
+            "nom_utilisateur" => $this->__get("nom_utilisateur"),
+            "prenom_utilisateur" => $this->__get("prenom_utilisateur"),
+            "mail_utilisateur" => $this->__get("mail_utilisateur"),
+            "sexe_utilisateur" => $this->__get("sexe_utilisateur"),
+            "mdp_utilisateur" => $this->__get("mdp_utilisateur")
+        );
+    }
 
     public function isAuthentificate($mail_utilisateur,$mdp_utilisateur){
 

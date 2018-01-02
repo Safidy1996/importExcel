@@ -28,6 +28,7 @@ class Welcome extends CI_Controller {
 	{
 		/*$data["page"] = "sign-in.php";
 		$this->load->view('base-template',$data);*/
+		
 		$this->load->view('sign-in.php');
 	}
 

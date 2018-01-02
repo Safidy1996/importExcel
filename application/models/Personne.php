@@ -44,6 +44,17 @@ class Personne extends Base_Model {
             "creance_personne" => $this->__get("creance_personne")
         );
     }
+
+    public function getFieldsNoId() {
+        return array (
+            
+            "etat" => $this->__get("etat"),
+            "nom_personne" => $this->__get("nom_personne"),
+            "prenom_personne" => $this->__get("prenom_personne"), 
+            "dette_personne" => $this->__get("dette_personne"),
+            "creance_personne" => $this->__get("creance_personne")
+        );
+    }
     
     public function toArray($array) {
         

@@ -31,6 +31,16 @@ class RegleValidation extends Base_Model {
 			"commentaire" => $this->__get("commentaire"),
         );
 	}
+
+	public function getFieldsNoId() {
+        return array (
+            "id_utilisateur" => $this->__get("id_utilisateur"),
+            "id_exp_table" => $this->__get("id_exp_table"),
+            "valeur_regle_validation" => $this->__get("valeur_regle_validation"), 
+			"date_regle_validation" => $this->__get("date_regle_validation"),
+			"commentaire" => $this->__get("commentaire"),
+        );
+	}
 	public function toArray($array) {
         
         $rights = array();

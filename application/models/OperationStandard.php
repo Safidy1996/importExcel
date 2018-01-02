@@ -27,6 +27,14 @@ class OperationStandard extends Base_Model {
         );
         
     }
+
+    public function getFieldsNoId() {
+
+        return array (
+            "libelle_operation_standard" => $this->__get("libelle_operation_standard")
+        );
+        
+    }
     public function toArray($array) {
         //var_dump($array);
         $rights = array();
